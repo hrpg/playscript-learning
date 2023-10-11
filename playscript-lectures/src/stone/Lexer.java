@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class Lexer {
 
     public static final String regex = "\\s*((//.*)|([0-9]+)|(\"(\\\\\"|\\\\\\\\|\\\\n|[^\"])*\")"
-            + "|[A-Za-z][A-Za-z0-9_]*|==|<=|>=|&&|\\|\\||\\p{Punct}";
+            + "|[A-Za-z][A-Za-z0-9_]*|==|<=|>=|&&|\\|\\||\\p{Punct})";
 
     private Pattern pattern = Pattern.compile(regex);
 
@@ -23,6 +23,7 @@ public class Lexer {
         this.hasMore = true;
         this.reader = new LineNumberReader(reader);
     }
+
 
     public Token read() throws ParseException {
         if (fillQueue(0)) {
@@ -143,8 +144,6 @@ public class Lexer {
             super(line);
             value = val;
         }
-
-        c
 
         public boolean isNumber() {
             return true;
